@@ -1,6 +1,11 @@
 // BasicMovement.cs
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class BasicMovement : MonoBehaviour
 {
@@ -9,10 +14,17 @@ public class BasicMovement : MonoBehaviour
   Rigidbody2D rb;
   PhotonView photonView;
 
+  [SerializeField] private GameObject cmvCam;
+
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     photonView = GetComponent<PhotonView>();
+
+    cmvCam = FindObjectOfType<CinemachineVirtualCamera>().gameObject;
+    cmvCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
+    cmvCam.GetComponent<CinemachineVirtualCamera>().LookAt = this.gameObject.transform;
+
   }
 
   // Update is called once per frame
