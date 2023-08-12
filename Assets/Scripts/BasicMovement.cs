@@ -44,4 +44,11 @@ public class BasicMovement : MonoBehaviour
     Vector2 newVector = new Vector2(horizontal, vertical);
     rb.position += newVector;
   }
+
+  private void OnCollisionEnter2D(Collision2D collision)
+  {
+    Debug.Log("Collission!");
+      rb.velocity = Vector2.zero;
+      rb.position = this.gameObject.transform.position;
+  }
 }
