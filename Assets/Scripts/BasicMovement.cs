@@ -29,8 +29,7 @@ public class BasicMovement : MonoBehaviour
     float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
     float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-    Vector3 newVector = new Vector3(horizontal, 0, vertical);
-
+    Vector3 newVector = new Vector3(horizontal, vertical, 0);
     rb.position += newVector;
   }
 }
