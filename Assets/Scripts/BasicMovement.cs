@@ -6,12 +6,12 @@ public class BasicMovement : MonoBehaviour
 {
   public float speed;
 
-  Rigidbody rb;
+  Rigidbody2D rb;
   PhotonView photonView;
 
   void Start()
   {
-    rb = GetComponent<Rigidbody>();
+    rb = GetComponent<Rigidbody2D>();
     photonView = GetComponent<PhotonView>();
   }
 
@@ -29,7 +29,7 @@ public class BasicMovement : MonoBehaviour
     float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
     float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-    Vector3 newVector = new Vector3(horizontal, vertical, 0);
+    Vector2 newVector = new Vector2(horizontal, vertical);
     rb.position += newVector;
   }
 }
